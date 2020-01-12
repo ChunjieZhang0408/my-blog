@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mvc.mapper.MemberInfoDao">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.example.mvc.model.MemberInfo">
+        <id column="id" property="id" />
+        <result column="nickname" property="nickname" />
+        <result column="account" property="account" />
+        <result column="password" property="password" />
+        <result column="avatar_url" property="avatarUrl" />
+        <result column="mobile" property="mobile" />
+        <result column="email" property="email" />
+        <result column="description" property="description" />
+        <result column="gender" property="gender" />
+        <result column="birthday" property="birthday" />
+        <result column="remark" property="remark" />
+        <result column="scope" property="scope" />
+        <result column="role_id" property="roleId" />
+        <result column="account_type" property="accountType" />
+        <result column="register_time" property="registerTime" />
+        <result column="status" property="status" />
+        <result column="last_login_ip" property="lastLoginIp" />
+        <result column="last_login_time" property="lastLoginTime" />
+        <result column="update_time" property="updateTime" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, nickname, account, password, avatar_url, mobile, email, description, gender, birthday, remark, scope, role_id, account_type, register_time, status, last_login_ip, last_login_time, update_time
+    </sql>
+
+</mapper>
