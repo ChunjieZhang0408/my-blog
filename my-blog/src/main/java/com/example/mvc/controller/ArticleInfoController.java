@@ -9,6 +9,8 @@ import com.example.vo.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.Resource;
+
 /**
  * <p>
  *  前端控制器
@@ -21,9 +23,10 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/article-info")
 public class ArticleInfoController {
 
-    @Autowired
+    @Resource
     private IArticleInfoService articleInfoService;
 
+    @GetMapping("/list")
     public Result list(String keyword,int pageNo,int pageSize){
         Page<ArticleInfo> articleInfoPage = articleInfoService.articleList(keyword, pageNo, pageSize);
         return Result.ok(Constants.MSG,"查詢成功").set(Constants.RESULT,articleInfoPage);

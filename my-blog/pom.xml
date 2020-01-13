@@ -11,7 +11,7 @@
     <groupId>com.example</groupId>
     <artifactId>my-blog</artifactId>
     <version>v1.1</version>
-    <name>video-platform</name>
+    <name>my-blog</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
