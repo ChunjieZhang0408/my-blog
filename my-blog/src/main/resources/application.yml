@@ -5,14 +5,19 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://127.0.0.1:3306/mybatisplus?characterEncoding=utf8&useUnicode=true&serverTimezone=Asia/Shanghai
     username: root
-    password: root
+    password: 123456
     type: com.alibaba.druid.pool.DruidDataSource
 
   thymeleaf:
     encoding: UTF-8
     cache: false
-    mode: HTML5
+    mode: HTML
     suffix: .html
-  profiles:
-    active:
+  devtools:
+    restart:
+      additional-paths: resources/**,static/**,templates/**
+
+druid:
+  username: root
+  password: root
 

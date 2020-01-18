@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="../kindeditor/themes/default/default.css"/>
+    <link rel="stylesheet" href="../layui/css/layui.css" media="all">
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        html,
+        body {
+            height: 100%;
+        }
+
+        #context {
+            width: 80%;
+            margin-left: 10%;
+            border-radius: 1%;
+        }
+
+        .input-group-text {
+            background-color: #999999;
+        }
+
+        #context {
+            position: absolute;
+            margin-top: 1%;;
+        }
+
+        #context,
+        #editor_form {
+            text-align: center;
+        }
+    </style>
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+    <div class="layui-header" th:replace="~{header::header}">
+    </div>
+    <div id="context">
+        <!-- <form class="layui-form" onsubmit="return consoleHtml();" method="post" id="editor_form">-->
+        <form class="layui-form" action="" method="post" id="editor_form" lay-filter="article-form">
+            <div class="layui-form-item">
+                <label class="layui-form-label">标题</label>
+                <div class="layui-input-block">
+                    <input type="text" name="title" required lay-verify="required" placeholder="请输入标题"
+                           autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">描述</label>
+                <div class="layui-input-block">
+                    <input type="text" name="description" required lay-verify="required" placeholder="请输入标题"
+                           autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">复选框</label>
+                <div class="layui-input-block">
+
+                    <input type="checkbox" th:each="type:${articleTypes}" th:value="${type.id}" name="typeId"
+                           th:title="${type.name}"/>
+                </div>
+            </div>
+
+
+            <div class="layui-form-item layui-form-text">
+                <div class="layui-input-block">
+                    <textarea placeholder="请输入内容" class="layui-textarea" name="content"  id="md_edit"></textarea>
+                </div>
+            </div>
+            <button type="button" class="layui-btn  layui-btn-normal layui-btn-fluid" id="add-article-btn">提交</button>
+        </form>
+    </div>
+</div>
+<script src="../kindeditor/kindeditor-all-min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../kindeditor/lang/zh-CN.js" type="text/javascript" charset="utf-8"></script>
+<script th:src="@{../layui/layui.js}" charset="utf-8"></script>
+<script type="text/javascript">
+    layui.use(['element', 'form'], function () {
+        var element = layui.element, form = layui.form;
+        console.log("element")
+        layui.$('#add-article-btn').on('click', function(){
+            var data = form.val('article-form');
+            alert(JSON.stringify(data));
+        });
+    });
+    var readJson;
+    var request = new XMLHttpRequest();
+    request.open("GET", "config.json");
+    request.send(null);
+    request.onload = function () {
+        if (request.status == 200) {
+            readJson = JSON.parse(request.responseText);
+            console.log(readJson);
+        }
+    }
+    // 关闭过滤模式，保留所有标签
+    KindEditor.options.filterMode = false;
+    var editor;
+    KindEditor.ready(function (K) {
+        var options = {
+            width: '100%',
+            height: "300px",
+            items: [
+                'undo', 'redo', '|', 'preview', 'template', 'code', 'cut', 'copy', 'paste',
+                'plainpaste', 'wordpaste', '|', 'justifyleft', 'justifycenter', 'justifyright',
+                'justifyfull', 'insertorderedlist', 'insertunorderedlist', 'indent', 'outdent', 'subscript',
+                'superscript', 'clearhtml', 'quickformat', 'selectall', '|', 'fullscreen',
+                'formatblock', 'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold',
+                'italic', 'underline', 'strikethrough', 'lineheight', 'removeformat',
+                'flash', 'media', 'insertfile', 'table', 'hr', 'emoticons', 'baidumap', 'pagebreak',
+                'anchor', 'link', 'unlink'
+            ],
+            themeType: 'simple',
+            uploadJson: 'http://www.gdni.cn:8082/upload',
+        }
+        editor = K.create("#md_edit", options);
+    })
+
+    function consoleHtml() {
+        editor.sync();
+        console.log(editor.html());
+        console.log(readJson);
+        return false;
+    }
+</script>
+</body>
+</html>

@@ -3,6 +3,10 @@ package com.example.mvc.service;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.example.mvc.model.ArticleInfo;
+import com.example.vo.Result;
+
+import java.util.List;
+import java.util.Map;
 
 /**
  * <p>
@@ -19,4 +23,8 @@ public interface IArticleInfoService extends IService<ArticleInfo> {
     boolean saveArticle(ArticleInfo articleInfo);
 
     boolean updateArticle(ArticleInfo articleInfo);
+
+    ArticleInfo findArticleById(String id);
+
+    Map<String, List<ArticleInfo>> sortByDateStr(List<ArticleInfo> records);
 }

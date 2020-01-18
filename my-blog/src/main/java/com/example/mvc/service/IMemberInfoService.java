@@ -13,4 +13,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface IMemberInfoService extends IService<MemberInfo> {
 
+    MemberInfo findMemberById(String id);
+
 }

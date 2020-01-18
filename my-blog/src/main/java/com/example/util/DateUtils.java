@@ -16,4 +16,9 @@ public class DateUtils {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         return dateFormat.format(date);
     }
+
+    public static String formatDay(Date date){
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy年MM月dd日");
+        return dateFormat.format(date);
+    }
 }

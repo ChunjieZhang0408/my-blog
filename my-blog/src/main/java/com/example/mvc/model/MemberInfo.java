@@ -78,7 +78,7 @@ public class MemberInfo implements Serializable {
     /**
      * 积分
      */
-    private Integer scope;
+    private Integer score;
 
     /**
      * 角色id
@@ -204,12 +204,12 @@ public class MemberInfo implements Serializable {
         this.remark = remark;
     }
 
-    public Integer getScope() {
-        return scope;
+    public Integer getScore() {
+        return score;
     }
 
-    public void setScope(Integer scope) {
-        this.scope = scope;
+    public void setScope(Integer score) {
+        this.score = score;
     }
 
     public String getRoleId() {
@@ -282,7 +282,7 @@ public class MemberInfo implements Serializable {
                 ", gender=" + gender +
                 ", birthday=" + birthday +
                 ", remark=" + remark +
-                ", scope=" + scope +
+                ", score=" + score +
                 ", roleId=" + roleId +
                 ", accountType=" + accountType +
                 ", registerTime=" + registerTime +

@@ -10,16 +10,21 @@
             margin: 50px auto;
             box-shadow: -2px -2px 2px #EFEFEF, 5px 5px 5px #B9B9B9;
         }
+        .fail{
+            color: red;
+        }
+        .success{
+            color: black;
+        }
     </style>
 </head>
 
 <body>
     <div>
         <div>
-            <h3>我的分数：<span id="myScore">0</span></h3>
-            <h3>电脑分数：<span id="computerScore">0</span></h3>
+            <h3>结果：<span id="result"></span></h3>
         </div>
-        <canvas id="chess" width="450px" height="450px"></canvas>
+        <canvas id="chess" width="600px" height="600px"></canvas>
     </div>
     <script type="text/javascript">
         var chessBoard = [];
@@ -29,8 +34,7 @@
         var myWin = [];
         var computerWin = [];
         var gameOver = false;
-        var myScoreNum = document.getElementById("myScore");
-        var computerScoreNum = document.getElementById("computerScore");
+        var result = document.getElementById("result");
         for (var i = 0; i < 15; i++) {
             chessBoard[i] = [];
             wins[i] = [];
@@ -104,26 +108,26 @@
         logo.onload = function () {
             /* 设置背景透明度 */
             /* context.globalAlpha = 0.4; */
-            context.drawImage(logo, 0, 0, 450, 450);
+            context.drawImage(logo, 0, 0, 600, 600);
             drawChessBoard();
         }
         var drawChessBoard = function () {
             for (var i = 0; i < 15; i++) {
                 /* 横线 */
-                context.moveTo(15 + i * 30, 15);
-                context.lineTo(15 + i * 30, 435);
+                context.moveTo(15 + i * 40, 15);
+                context.lineTo(15 + i * 40, 580);
                 context.stroke();
                 /* 画纵线 */
-                context.moveTo(15, 15 + i * 30);
-                context.lineTo(435, 15 + i * 30);
+                context.moveTo(15, 15 + i * 40);
+                context.lineTo(580, 15 + i * 40);
                 context.stroke();
             }
         }
         var oneStep = function (i, j, me) {
             context.beginPath();
-            context.arc(15 + i * 30, 15 + j * 30, 13, 0, 2 * Math.PI);
+            context.arc(15 + i * 40, 15 + j * 40, 13, 0, 2 * Math.PI);
             context.closePath();
-            var gradient = context.createRadialGradient(15 + i * 30 + 2, 15 + j * 30 - 2, 13, 15 + i * 30 + 2, 15 + j * 30 + 2, 0);
+            var gradient = context.createRadialGradient(15 + i * 40 + 2, 15 + j * 40 - 2, 13, 15 + i * 40 + 2, 15 + j * 40 + 2, 0);
             if (me) {
                 gradient.addColorStop(0, "#0A0A0A");
                 gradient.addColorStop(1, "#636766");
@@ -143,8 +147,8 @@
             }
             var x = e.offsetX;
             var y = e.offsetY;
-            var i = Math.floor(x / 30);
-            var j = Math.floor(y / 30);
+            var i = Math.floor(x / 40);
+            var j = Math.floor(y / 40);
             if (chessBoard[i][j] == 0) {
                 console.log(i, j);
                 oneStep(i, j, first);
@@ -161,7 +165,8 @@
                     }
                     if (myWin[k] == 5) {
                         console.log("You win ...");
-                        myScoreNum.innerText="You win";
+                        result.setAttribute("class","success");
+                        result.innerText="You win";
                         gameOver = true;
                     }
                 }
@@ -246,7 +251,8 @@
                 }
                 if (computerWin[k] == 5) {
                     console.log("You failed ...");
-                    computerScoreNum.innerText="You failed ...";
+                    result.setAttribute("class","failed");
+                    result.innerText="You failed";
                     gameOver = true;
                 }
             }

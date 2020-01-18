@@ -18,4 +18,5 @@ public interface Constants {
 
     String RESULT = "result";
 
+    Integer NORMAL = 1;
 }

@@ -1,14 +1,15 @@
 package com.example.mvc.model;
 
-import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.IdType;
-import java.util.Date;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
+
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
  * @author ZhangChunjie
@@ -17,7 +18,7 @@ import java.io.Serializable;
 @TableName("article_info")
 public class ArticleInfo implements Serializable {
 
-    private static final long serialVersionUID=1L;
+    private static final long serialVersionUID = 1L;
 
     /**
      * ID
@@ -33,7 +34,7 @@ public class ArticleInfo implements Serializable {
     /**
      * 用户ID
      */
-    private Long userId;
+    private String userId;
 
     /**
      * 文章封面图片
@@ -58,7 +59,7 @@ public class ArticleInfo implements Serializable {
     /**
      * 类型
      */
-    private Long typeId;
+    private String typeId;
 
     /**
      * 状态
@@ -95,10 +96,13 @@ public class ArticleInfo implements Serializable {
      */
     private Date createTime;
 
+    private String createTimeStr;
     /**
      * 更新时间
      */
     private Date updateTime;
+
+    private String updateTimeStr;
 
 
     public String getId() {
@@ -117,11 +121,11 @@ public class ArticleInfo implements Serializable {
         this.title = title;
     }
 
-    public Long getUserId() {
+    public String getUserId() {
         return userId;
     }
 
-    public void setUserId(Long userId) {
+    public void setUserId(String userId) {
         this.userId = userId;
     }
 
@@ -157,11 +161,11 @@ public class ArticleInfo implements Serializable {
         this.top = top;
     }
 
-    public Long getTypeId() {
+    public String getTypeId() {
         return typeId;
     }
 
-    public void setTypeId(Long typeId) {
+    public void setTypeId(String typeId) {
         this.typeId = typeId;
     }
 
@@ -229,25 +233,19 @@ public class ArticleInfo implements Serializable {
         this.updateTime = updateTime;
     }
 
-    @Override
-    public String toString() {
-        return "ArticleInfo{" +
-        "id=" + id +
-        ", title=" + title +
-        ", userId=" + userId +
-        ", coverImage=" + coverImage +
-        ", qrcodePath=" + qrcodePath +
-        ", content=" + content +
-        ", top=" + top +
-        ", typeId=" + typeId +
-        ", status=" + status +
-        ", recommended=" + recommended +
-        ", original=" + original +
-        ", description=" + description +
-        ", keywords=" + keywords +
-        ", comment=" + comment +
-        ", createTime=" + createTime +
-        ", updateTime=" + updateTime +
-        "}";
+    public String getCreateTimeStr() {
+        return createTimeStr;
+    }
+
+    public void setCreateTimeStr(String createTimeStr) {
+        this.createTimeStr = createTimeStr;
+    }
+
+    public String getUpdateTimeStr() {
+        return updateTimeStr;
+    }
+
+    public void setUpdateTimeStr(String updateTimeStr) {
+        this.updateTimeStr = updateTimeStr;
     }
 }
