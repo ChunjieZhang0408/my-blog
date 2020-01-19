@@ -93,16 +93,16 @@ public class ImageUtils {
         }
 
         g.dispose();
-        request.getSession().setAttribute("vcode", code.toLowerCase());
-        // 随机五条条线
+        request.getSession().setAttribute("captcha", code.toLowerCase());
+        // 随机五条线
         for (int i = 0; i < 5; i++) {
             g.drawLine(ran.nextInt(width), ran.nextInt(height), ran.nextInt(width), ran.nextInt(height));
         }
 
         // 添加噪点
         Random random = new Random();
-        float yawpRate = 0.05f;// 噪声率
-        int area = (int) (yawpRate * width * height);
+        float rate = 0.05f;// 噪声率
+        int area = (int) (rate * width * height);
         for (int i = 0; i < area; i++) {
             int x = random.nextInt(width);
             int y = random.nextInt(height);
@@ -113,13 +113,10 @@ public class ImageUtils {
         response.setHeader("Cache-Control", "no-cache");
         response.setDateHeader("Expires", -1);
         response.setContentType("image/jpeg");
-        // 4. 输出结果
-        // 常见的压缩格式：jpeg(有损压缩), png(无损压缩) ...
         try {
             ImageIO.write(img, PIC_OUT_TYPE_PNG, response.getOutputStream());
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 }

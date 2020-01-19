@@ -26,6 +26,9 @@
         .layui-fluid{
             width: 80%;
         }
+        .article-title-item{
+           padding-top: 10px;
+        }
     </style>
 </head>
 <body class="layui-layout-body">
@@ -33,37 +36,17 @@
     <div class="layui-header" th:replace="~{header::header}">
     </div>
     <div class="layui-fluid">
-        <!-- 内容主体区域 -->
-       <!-- <div class="layui-carousel" id="carousel-index">
-            <div carousel-item>
-                <div>
-                    <img src="../img/index/1.jpg" alt="" height="300px">
-                </div>
-                <div>
-                    <img src="../img/index/2.jpg" alt="" height="300px">
-                </div>
-                <div>
-                    <img src="../img/index/5.jpg" alt="" height="300px">
-                </div>
-                <div>
-                    <img src="../img/index/4.jpg" alt="" height="300px">
-                </div>
-                <div>
-                    <img src="../img/index/5.jpg" alt="" height="300px">
-                </div>
-            </div>
-        </div>-->
         <div style="padding: 15px;">
             <ul class="layui-timeline">
                 <li class="layui-timeline-item" th:each="entry:${articleInfoHashMap}">
                     <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
                     <div class="layui-timeline-content layui-text">
                         <h3 class="layui-timeline-title" th:text="${entry.key}">8月18日</h3>
-                        <a th:each="article:${entry.value}" th:href="@{/article/{articleId}(articleId=${article.id})}">
+                        <a class="article-title-item" th:each="article:${entry.value}" th:href="@{/article/{articleId}(articleId=${article.id})}">
                             <h3><p th:text="${article.title}"></p></h3>
                             <h4 th:text="${article.description}"></h4>
                         </a>
-                        <br/>
+
                     </div>
                 </li>
                 <li class="layui-timeline-item">
@@ -81,15 +64,6 @@
 <script type="text/javascript">
     layui.use(['element', 'carousel'], function () {
         var element = layui.element, carousel = layui.carousel;
-        // carousel.render({
-        //     elem: '#carousel-index',
-        //     width: '225px',
-        //     height: '300px',
-        //     autoplay: true,
-        //     interval: 3000,
-        //     arrow: 'hover',
-        //     indicator: 'inside'
-        // })
     })
 </script>
 </body>

@@ -1,0 +1,2 @@
+mvn install:install-file -DgroupId=org.apache.httpcomponents -DartifactId=httpmime  -Dversion=4.5.10
+ -Dpackaging=jar -Dfile=D:\code\JavaCode\GitHub\my-blog\my-blog\src\main\resources\lib\httpmime-4.5.10.jar(httpmime-4.5.10.jar jar包地址)

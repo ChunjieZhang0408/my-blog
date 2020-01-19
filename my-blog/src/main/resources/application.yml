@@ -1,22 +1,31 @@
 spring:
   application:
     name: aob-console
+# 数据库配置
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://127.0.0.1:3306/mybatisplus?characterEncoding=utf8&useUnicode=true&serverTimezone=Asia/Shanghai
     username: root
-    password: 123456
+    password: root
     type: com.alibaba.druid.pool.DruidDataSource
 
+# thymeleaf配置
   thymeleaf:
     encoding: UTF-8
     cache: false
     mode: HTML
     suffix: .html
+
+# 热部署配置
   devtools:
     restart:
       additional-paths: resources/**,static/**,templates/**
 
+  # 文件上传配置
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
 druid:
   username: root
   password: root

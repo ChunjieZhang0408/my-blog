@@ -12,7 +12,9 @@ public interface Constants {
 
     Integer SUCCESS_CODE = 0;
 
-    String MSG = "message";
+    String MSG = "msg";
+
+    String DATA = "data";
 
     String LOCAL_MSG = "localMessage";
 

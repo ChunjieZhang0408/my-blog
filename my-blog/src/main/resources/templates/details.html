@@ -27,9 +27,14 @@
             border-radius: 50%;
         }
 
+        #layui-header-detail {
+            position: fixed;
+        }
+
         .layui-fluid {
             width: 80%;
-
+            z-index: 1;
+            overflow: auto;
         }
 
         #content {
@@ -43,7 +48,7 @@
 </head>
 <body class="layui-layout-body">
 <div class="layui-layout layui-layout-admin">
-    <div class="layui-header" th:replace="~{header::header}">
+    <div id="layui-header-detail" class="layui-header" th:replace="~{header::header}">
     </div>
     <div class="layui-fluid">
         <!-- 内容主体区域 -->

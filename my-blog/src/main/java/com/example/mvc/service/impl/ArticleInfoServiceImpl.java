@@ -71,9 +71,9 @@ public class ArticleInfoServiceImpl extends ServiceImpl<ArticleInfoDao, ArticleI
     }
 
     @Override
-    public Map<String, List<ArticleInfo>> sortByDateStr(List<ArticleInfo> records) {
+    public Map<String, List<ArticleInfo>> sortByDateStr(List<ArticleInfo> articles) {
         Map<String, List<ArticleInfo>> articleInfoHashMap = new HashMap<>();
-        for (ArticleInfo r : records) {
+        for (ArticleInfo r : articles) {
             String dateStr = DateUtils.formatDay(r.getCreateTime());
             r.setCreateTimeStr(dateStr);
             List<ArticleInfo> articleInfo;
